@@ -22,6 +22,7 @@ router.delete('/:id', flightCtrl.delete)
 
 //PUT - localhost:3000/flights/:id
 router.put('/:id', flightCtrl.update)
+router.post('/:id/tickets', flightCtrl.createTicket)
 
 
 export {
