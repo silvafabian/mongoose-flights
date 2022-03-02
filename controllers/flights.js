@@ -2,7 +2,7 @@ import { Flight } from '../models/flight.js'
 
 function newFlight(req, res) {
   res.render('flights/new', {
-    title: 'Add Movie'
+    title: 'Add Flight'
   })
 }
 
@@ -27,8 +27,18 @@ function index(req, res) {
   })
 }
 
+function show(req, res) {
+  Flight.findById(req.params.id, function (err, flight) {
+    res.render('flights/show', { 
+      title: 'Flight Details', 
+      flight,
+    })
+  })
+}
+
 export {
   newFlight as new,
   create,
   index,
+  show,
 }
