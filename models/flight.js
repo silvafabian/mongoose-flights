@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 
 const ticketSchema = new Schema({
   price: {
-    Number,
+    type: Number,
     min: 0,
   },
   seat: {
@@ -35,7 +35,7 @@ const flightSchema = new Schema({
     type: Date,
     default: Date.now() + 365*24*60*60000
   },
-  tickets: [ticketSchema]
+  tickets: [ticketSchema],
 }, {
   timestamps: true
 })
