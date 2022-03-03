@@ -8,7 +8,6 @@ function newFlight(req, res) {
 }
 
 function create(req, res) {
-  console.log('this is create');
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key]
 	}
@@ -76,6 +75,15 @@ function createTicket(req, res) {
   })
 }
 
+function addMeal(req, res) {
+  Flight.findById(req.params.id, function(err, flight) {
+    flight.meals.push(req.body.mealId)
+    flight.save(function(err) {
+      res.redirect(`/flights/${flight._id}`)
+    })
+  })
+}
+
 export {
   newFlight as new,
   create,
@@ -85,4 +93,5 @@ export {
   edit,
   update,
   createTicket,
+  addMeal,
 }
