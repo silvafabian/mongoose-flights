@@ -84,6 +84,15 @@ function addMeal(req, res) {
   })
 }
 
+function deleteTicket(req, res) {
+  Flight.findById(req.params.id, function(err, flight) {
+    flight.tickets.id(req.params.ticketId).remove()
+    flight.save(function(err){
+      res.redirect(`/flights/${flight._id}`)
+    })
+  })
+}
+
 export {
   newFlight as new,
   create,
@@ -94,4 +103,5 @@ export {
   update,
   createTicket,
   addMeal,
+  deleteTicket,
 }
